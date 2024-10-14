@@ -1,19 +1,23 @@
+using System.Diagnostics;
+
 namespace Algorithms.Sort;
 
 public static class InsertionSort
 {
-    public static void DoAscending(List<int> elements)
+    public static void DoAscending(IList<int> elements)
     {
         Do(elements, (n1, n2) => n1 > n2);
     }
 
-    public static void DoDescending(List<int> elements)
+    public static void DoDescending(IList<int> elements)
     {
         Do(elements, (n1, n2) => n1 < n2);
     }
 
-   private static void Do(List<int> elements, Func<int, int, bool> comparer)
+   private static void Do(IList<int> elements, Func<int, int, bool> comparer)
    {
+        Debug.Assert(comparer != null);
+
          if (elements == null)
             return;
 
