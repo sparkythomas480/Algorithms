@@ -4,28 +4,28 @@ namespace Algorithms.Sort;
 
 public static class InsertionSort
 {
-    private sealed class DescendingComparer : IComparer<int>
+    private sealed class DescendingComparer<T> : IComparer<T>
     {
-        public static readonly DescendingComparer instance = new DescendingComparer();
-        private readonly Comparer<int> ascendingComparer = Comparer<int>.Default;
+        public static readonly DescendingComparer<T> instance = new DescendingComparer<T>();
+        private readonly Comparer<T> ascendingComparer = Comparer<T>.Default;
 
-        int IComparer<int>.Compare(int x, int y)
+        int IComparer<T>.Compare(T? x, T? y)
         {
             return ascendingComparer.Compare(y, x);
         }
     }
 
-    public static void DoAscending(IList<int> elements)
+    public static void DoAscending<T>(IList<T> elements)
     {
-        Do(elements, Comparer<int>.Default);
+        Do(elements, Comparer<T>.Default);
     }
 
-    public static void DoDescending(IList<int> elements)
+    public static void DoDescending<T>(IList<T> elements)
     {
-        Do(elements, DescendingComparer.instance);
+        Do(elements, DescendingComparer<T>.instance);
     }
 
-   private static void Do(IList<int> elements, IComparer<int> comparer)
+   private static void Do<T>(IList<T> elements, IComparer<T> comparer)
    {
         Debug.Assert(comparer != null);
 
@@ -34,7 +34,7 @@ public static class InsertionSort
 
         for (int i = 1; i < elements.Count; ++i)
         {
-            int key = elements[i];
+            T key = elements[i];
             int j = i - 1;
             while (j >= 0 && comparer.Compare(elements[j], key) > 0)
             {

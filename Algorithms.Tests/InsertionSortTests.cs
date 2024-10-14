@@ -12,7 +12,7 @@ public class InsertionSortTests
     [Fact]
     public void DoAscending_Throws_ArgumentNullException_When_Arg_Null()
     {
-        var exception = Assert.Throws<ArgumentNullException>(() => InsertionSort.DoAscending(null!));
+        var exception = Assert.Throws<ArgumentNullException>(() => InsertionSort.DoAscending<double>(null!));
         Assert.Equal("elements", exception.ParamName);
         Assert.Equal("The elements argument must not be null. (Parameter 'elements')", exception.Message);
     }
@@ -44,7 +44,7 @@ public class InsertionSortTests
     [Fact]
     public void DoDescending_Throws_ArgumentNullException_When_Arg_Null()
     {
-        var exception = Assert.Throws<ArgumentNullException>(() => InsertionSort.DoDescending(null!));
+        var exception = Assert.Throws<ArgumentNullException>(() => InsertionSort.DoDescending<int>(null!));
         Assert.Equal("elements", exception.ParamName);
         Assert.Equal("The elements argument must not be null. (Parameter 'elements')", exception.Message);
     }
