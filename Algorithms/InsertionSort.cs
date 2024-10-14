@@ -11,6 +11,10 @@ public static class InsertionSort
 
         int IComparer<T>.Compare(T? x, T? y)
         {
+            // Note that we're swapping the arguments around here t make
+            // the sort a descend instead of ascend. We could alternatively
+            // call the original with (x, y) and then multiply the result by
+            // -1
             return ascendingComparer.Compare(y, x);
         }
     }
