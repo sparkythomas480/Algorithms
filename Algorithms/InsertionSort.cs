@@ -19,7 +19,7 @@ public static class InsertionSort
         Debug.Assert(comparer != null);
 
          if (elements == null)
-            return;
+            throw new ArgumentNullException(nameof(elements), "The elements argument must not be null.");
 
         if (elements.Count == 0 || elements.Count == 1)
             return;
